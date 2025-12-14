@@ -1,50 +1,13 @@
 {
-  "name": "@laraveldesign/button",
-  "version": "1.0.0",
-  "description": "Flexible, beautiful button components for Vue 3",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "resources/js/vue"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./vue": {
-      "import": "./resources/js/vue/index.ts"
-    }
-  },
-  "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch"
-  },
-  "peerDependencies": {
-    "vue": "^3.3.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.0",
-    "typescript": "^5.0.0",
-    "vite": "^5.0.0",
-    "vite-plugin-dts": "^3.0.0",
-    "vue": "^3.4.0"
-  },
-  "keywords": [
-    "vue",
-    "vue3",
-    "button",
-    "component",
-    "tailwind",
-    "laravel"
-  ],
-  "author": "Shane Barron <mrshanebarron@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mrshanebarron/laraveldesign-button.git"
-  }
+    "name": "@mrshanebarron/button",
+    "version": "1.0.0",
+    "description": "Customizable button component - Vue 3",
+    "main": "resources/js/index.js",
+    "module": "resources/js/index.js",
+    "files": ["resources/js", "resources/css"],
+    "keywords": ["vue", "vue3", "button", "laravel"],
+    "author": "Shane Barron <mrshanebarron@gmail.com>",
+    "license": "MIT",
+    "peerDependencies": {"vue": "^3.0.0"},
+    "repository": {"type": "git", "url": "https://github.com/mrshanebarron/button.git"}
 }

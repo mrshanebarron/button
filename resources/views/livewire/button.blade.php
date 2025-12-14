@@ -1,57 +1,50 @@
 @php
-    $tag = $href ? 'a' : 'button';
-    $spinnerClass = config('ld-button.loading.spinner_class');
+    $baseClass = config('ld-button.base');
+    $variantClass = config('ld-button.variants.' . $variant, config('ld-button.variants.primary'));
+    $sizeClass = config('ld-button.sizes.' . $size, config('ld-button.sizes.md'));
+    $classes = "$baseClass $variantClass $sizeClass";
 @endphp
 
-<{{ $tag }}
-    @if($href)
+@if($href)
+    <a
         href="{{ $href }}"
-        target="{{ $target }}"
-    @else
-        type="{{ $type }}"
-    @endif
-    @if($disabled || $loading)
-        {{ $disabled ? 'disabled' : '' }}
-        aria-disabled="true"
-    @endif
-    @if($wireClick && !$href)
-        wire:click="{{ $wireClick }}"
-        @if($confirm)
-            wire:confirm="{{ $confirmMessage ?: 'Are you sure?' }}"
+        class="{{ $classes }}"
+        @if($disabled) aria-disabled="true" tabindex="-1" @endif
+    >
+        @if($loading)
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+        @elseif($icon && $iconPosition === 'left')
+            <span class="mr-2">{!! $icon !!}</span>
         @endif
-    @endif
-    @if($wireSubmit && !$href)
-        wire:submit="{{ $wireSubmit }}"
-    @endif
-    @if($loading)
-        wire:loading.attr="disabled"
-    @endif
-    class="{{ $this->getComputedClasses() }}"
->
-    {{-- Loading spinner --}}
-    @if($loading)
-        <svg class="{{ $spinnerClass }} {{ $this->getIconSizeClasses() }} -ml-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-    @endif
 
-    {{-- Left icon --}}
-    @if($icon && $iconPosition === 'left' && !$loading)
-        <x-dynamic-component :component="$icon" class="{{ $this->getIconSizeClasses() }} -ml-0.5" />
-    @endif
+        {{ $slot }}
 
-    {{-- Button text --}}
-    @if($loading && $loadingText)
-        {{ $loadingText }}
-    @elseif($text)
-        {{ $text }}
-    @else
-        {{ $slot ?? '' }}
-    @endif
+        @if($icon && $iconPosition === 'right' && !$loading)
+            <span class="ml-2">{!! $icon !!}</span>
+        @endif
+    </a>
+@else
+    <button
+        type="{{ $type }}"
+        class="{{ $classes }}"
+        @if($disabled || $loading) disabled @endif
+    >
+        @if($loading)
+            <svg class="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+        @elseif($icon && $iconPosition === 'left')
+            <span class="mr-2">{!! $icon !!}</span>
+        @endif
 
-    {{-- Right icon --}}
-    @if($icon && $iconPosition === 'right' && !$loading)
-        <x-dynamic-component :component="$icon" class="{{ $this->getIconSizeClasses() }} -mr-0.5" />
-    @endif
-</{{ $tag }}>
+        {{ $slot }}
+
+        @if($icon && $iconPosition === 'right' && !$loading)
+            <span class="ml-2">{!! $icon !!}</span>
+        @endif
+    </button>
+@endif
