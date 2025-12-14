@@ -4,6 +4,6 @@ export { Button };
 
 export default {
   install(app) {
-    app.component('LdButton', Button);
+    app.component('SbButton', Button);
   }
 };

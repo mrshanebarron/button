@@ -37,6 +37,6 @@ class Button extends Component
 
     public function render()
     {
-        return view('ld-button::livewire.button');
+        return view('sb-button::livewire.button');
     }
 }

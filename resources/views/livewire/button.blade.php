@@ -1,7 +1,7 @@
 @php
-    $baseClass = config('ld-button.base');
-    $variantClass = config('ld-button.variants.' . $variant, config('ld-button.variants.primary'));
-    $sizeClass = config('ld-button.sizes.' . $size, config('ld-button.sizes.md'));
+    $baseClass = config('sb-button.base');
+    $variantClass = config('sb-button.variants.' . $variant, config('sb-button.variants.primary'));
+    $sizeClass = config('sb-button.sizes.' . $size, config('sb-button.sizes.md'));
     $classes = "$baseClass $variantClass $sizeClass";
 @endphp
 

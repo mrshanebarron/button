@@ -32,7 +32,7 @@
 import { computed } from 'vue';
 
 export default {
-  name: 'LdButton',
+  name: 'SbButton',
   props: {
     type: { type: String, default: 'button' },
     variant: { type: String, default: 'primary' },
