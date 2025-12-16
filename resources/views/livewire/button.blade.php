@@ -20,7 +20,7 @@
             <span class="mr-2">{!! $icon !!}</span>
         @endif
 
-        {{ $slot }}
+        {{ $slot ?? '' }}
 
         @if($icon && $iconPosition === 'right' && !$loading)
             <span class="ml-2">{!! $icon !!}</span>
@@ -41,7 +41,7 @@
             <span class="mr-2">{!! $icon !!}</span>
         @endif
 
-        {{ $slot }}
+        {{ $slot ?? '' }}
 
         @if($icon && $iconPosition === 'right' && !$loading)
             <span class="ml-2">{!! $icon !!}</span>
