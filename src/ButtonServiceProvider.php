@@ -8,7 +8,7 @@ class ButtonServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/button.php', 'sb-button');
+        $this->mergeConfigFrom(__DIR__ . '/../config/sb-button.php', 'sb-button');
     }
 
     public function boot(): void
@@ -21,7 +21,7 @@ class ButtonServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/button.php' => config_path('sb-button.php'),
+                __DIR__ . '/../config/sb-button.php' => config_path('sb-button.php'),
             ], 'sb-button-config');
         }
     }
