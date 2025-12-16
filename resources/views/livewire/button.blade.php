@@ -1,3 +1,4 @@
+<div class="inline-block">
 @php
     $baseClass = config('sb-button.base');
     $variantClass = config('sb-button.variants.' . $variant, config('sb-button.variants.primary'));
@@ -48,3 +49,4 @@
         @endif
     </button>
 @endif
+</div>
