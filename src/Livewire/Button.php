@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class Button extends Component
 {
+    public string $label = '';
     public string $type = 'button';
     public string $variant = 'primary';
     public string $size = 'md';
@@ -16,6 +17,7 @@ class Button extends Component
     public string $iconPosition = 'left';
 
     public function mount(
+        string $label = '',
         string $type = 'button',
         string $variant = 'primary',
         string $size = 'md',
@@ -25,6 +27,7 @@ class Button extends Component
         ?string $icon = null,
         string $iconPosition = 'left'
     ): void {
+        $this->label = $label;
         $this->type = $type;
         $this->variant = $variant;
         $this->size = $size;

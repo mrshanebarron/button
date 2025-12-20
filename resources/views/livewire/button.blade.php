@@ -41,7 +41,7 @@
             <span style="margin-right: 0.5rem;">{!! $icon !!}</span>
         @endif
 
-        {{ $slot ?? '' }}
+        {{ $label }}
 
         @if($icon && $iconPosition === 'right' && !$loading)
             <span style="margin-left: 0.5rem;">{!! $icon !!}</span>
@@ -62,7 +62,7 @@
             <span style="margin-right: 0.5rem;">{!! $icon !!}</span>
         @endif
 
-        {{ $slot ?? '' }}
+        {{ $label }}
 
         @if($icon && $iconPosition === 'right' && !$loading)
             <span style="margin-left: 0.5rem;">{!! $icon !!}</span>
